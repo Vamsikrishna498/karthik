@@ -13,7 +13,7 @@ public class OtpController {
     private final OtpService otpService;
 
     @PostMapping("/generate")
-    public ResponseEntity<String> generateOtp(@RequestParam String emailOrPhone) {
-        return ResponseEntity.ok(otpService.generateAndSendOtp(emailOrPhone));
+    public ResponseEntity<String> generateOtp(@RequestParam String phoneNumber) {
+        return ResponseEntity.ok(otpService.generateAndSendOtp(phoneNumber));
     }
 }
