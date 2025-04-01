@@ -1,11 +1,30 @@
 package com.farmer.farmermanagement.enums;
 
 public enum PortalRole {
-    FARMER,       // Regular farmer using the system  
-    LAND_OWNER,   // Farmer who owns the land  
-    AGRI_VENDOR,  // Vendor supplying agricultural goods  
-    BANK_OFFICER, // Bank representative managing loans  
-    GOVERNMENT_OFFICER, // Government official overseeing regulations  
-    ADMIN,        // System administrator  
-    USER          // General user with limited access  
+    FARMER("Farmer"),
+    LAND_OWNER("Land Owner"),
+    AGRI_VENDOR("Agricultural Vendor"),
+    BANK_OFFICER("Bank Officer"),
+    GOVERNMENT_OFFICER("Government Officer"),
+    ADMIN("Administrator"),
+    USER("User");
+
+    private final String displayName;
+
+    PortalRole(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public static PortalRole fromString(String text) {
+        for (PortalRole role : PortalRole.values()) {
+            if (role.name().equalsIgnoreCase(text) || role.displayName.equalsIgnoreCase(text)) {
+                return role;
+            }
+        }
+        throw new IllegalArgumentException("Invalid portal role: " + text);
+    }
 }
